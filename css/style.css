@@ -1,0 +1,185 @@
+/* Define your CSS styles for layout, colors, fonts, and other visual elements here */
+html {
+  height: 100%;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  display: grid;
+  grid-template-areas:
+    "head head"
+    "aside main"
+    "foot foot";
+  grid-template-rows: 100px 1fr 50px;
+  grid-template-columns: 100px 1fr;
+}
+
+h2 {
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+header {
+  grid-area: head;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+nav {
+  grid-area: aside;
+  background-color: lightyellow;
+  display: grid;
+  padding: 20px 10px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  font-size: large;
+}
+
+#face {
+  width: 75px;
+  border-radius: 50%;
+}
+
+#icons {
+  width: 75px;
+  display: flex;
+  justify-content: space-around;
+}
+
+i {
+  font-size: large;
+}
+
+main {
+  grid-area: "main";
+  display: grid;
+  place-items: center;
+  grid-template-columns: 1fr;
+  grid-gap: 20px;
+  padding: 20px;
+  background-color: lightblue;
+}
+
+#home {
+  padding: auto;
+}
+
+#about {
+  width: 80ch;
+}
+
+.blog-link {
+  padding: 10px 30px;
+  margin-bottom: 30px;
+  width: 80ch;
+  border: solid black 3px;
+  position: relative;
+}
+
+@media(max-width: 911px) {
+  .blog-link {
+    width: 40ch;
+  }
+}
+
+.blog-link p {
+  margin-bottom: 30px;
+}
+
+.blog-link i {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  font-size: x-large;
+}
+
+@media(max-width: 850px) {
+  #about {
+    width: 50ch;
+  }
+}
+
+.resp-desc {
+  display: none;
+}
+
+.desc {
+  padding: 10px;
+}
+
+.project {
+  display: flex;
+  gap: 50px;
+  justify-content: space-between;
+  margin: 100px;
+}
+
+@media(max-width: 890px) {
+  .project {
+    flex-direction: column;
+    justify-content: center;
+    margin: 50px;
+    place-items: center;
+  }
+
+  .wide-desc {
+    display: none;
+  }
+
+  .resp-desc {
+    display: block;
+  }
+}
+
+figure {
+  margin: 0;
+}
+
+figure img {
+  width: 400px;
+}
+
+iframe {
+  width: 400px;
+}
+
+@media(max-width: 930px) {
+  figure img {
+    width: 300px;
+  }
+}
+
+figcaption {
+  color: #636363;
+}
+
+footer {
+  grid-area: foot;
+  text-align: center;
+  padding: auto;
+  background-color: lightcoral;
+}
