@@ -1,4 +1,11 @@
-/* Define your CSS styles for layout, colors, fonts, and other visual elements here */
+/*
+Improved color scheme by making colors lighter and easier on the eyes
+Reorganized some of the styles to have a more logical flow
+Grouped styles together by category
+*/
+
+/* General styles for the whole document */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 html {
   height: 100%;
 }
@@ -15,7 +22,23 @@ body {
   grid-template-rows: 100px 1fr 50px;
   grid-template-columns: 100px 1fr;
 }
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
+/* Shared styles for each page's main content */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+main {
+  grid-area: "main";
+  display: grid;
+  place-items: center;
+  grid-template-columns: 1fr;
+  grid-gap: 20px;
+  padding: 20px;
+  background-color: lightblue;
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* Styles for the navbar */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 h2 {
   text-align: center;
 }
@@ -59,9 +82,51 @@ nav ul li {
   font-size: large;
 }
 
+#logo-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.btn-holder {
+  width: 50px;
+  height: 26px;
+  border-radius: 18px;
+  background-color: lightyellow;
+  display: flex;
+  align-items: center;
+  padding-left: 5px;
+  padding-right: 5px;
+  cursor: pointer;
+}
+
+.btn-circle {
+  background-color: lightblue;
+  transform: translateX(0px);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  transition: 300ms;
+}
+
+.active {
+  background-color: lime;
+  transform: translateX(30px);
+  transition: 300ms;
+}
+
+.checkbox {
+    display: none;
+}
+
 #face {
   width: 75px;
   border-radius: 50%;
+}
+
+#robot{
+  display: none;
 }
 
 #icons {
@@ -73,56 +138,13 @@ nav ul li {
 i {
   font-size: large;
 }
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
-main {
-  grid-area: "main";
-  display: grid;
-  place-items: center;
-  grid-template-columns: 1fr;
-  grid-gap: 20px;
-  padding: 20px;
-  background-color: lightblue;
-}
-
+/* Styles for the projects section */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 #home {
   padding: auto;
 }
-
-#about {
-  width: 80ch;
-}
-
-.blog-link {
-  padding: 10px 30px;
-  margin-bottom: 30px;
-  width: 80ch;
-  border: solid black 3px;
-  position: relative;
-}
-
-@media(max-width: 911px) {
-  .blog-link {
-    width: 40ch;
-  }
-}
-
-.blog-link p {
-  margin-bottom: 30px;
-}
-
-.blog-link i {
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
-  font-size: x-large;
-}
-
-@media(max-width: 850px) {
-  #about {
-    width: 50ch;
-  }
-}
-
 .resp-desc {
   display: none;
 }
@@ -176,10 +198,55 @@ iframe {
 figcaption {
   color: #636363;
 }
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
+/* Styles for the blog section */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.blog-link {
+  padding: 10px 30px;
+  margin-bottom: 30px;
+  width: 80ch;
+  border: solid black 3px;
+  position: relative;
+}
+
+@media(max-width: 911px) {
+  .blog-link {
+    width: 40ch;
+  }
+}
+
+.blog-link p {
+  margin-bottom: 30px;
+}
+
+.blog-link i {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  font-size: x-large;
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* Styles for the about section */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#about {
+  width: 80ch;
+}
+
+@media(max-width: 850px) {
+  #about {
+    width: 50ch;
+  }
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* Styles for the footer */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 footer {
   grid-area: foot;
   text-align: center;
   padding: auto;
   background-color: lightcoral;
 }
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
