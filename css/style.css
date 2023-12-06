@@ -1,7 +1,5 @@
 /*
-Improved color scheme by making colors lighter and easier on the eyes
-Reorganized some of the styles to have a more logical flow
-Grouped styles together by category
+- Following the Proj 4 feedback, I extended the body to 100% height so that my dark mode colors cover the whole screen
 */
 
 /* General styles for the whole document */
@@ -13,6 +11,7 @@ html {
 body {
   padding: 0;
   margin: 0;
+  height: 100%;
   font-family: Arial, sans-serif;
   display: grid;
   grid-template-areas:

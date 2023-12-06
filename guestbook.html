@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<!--   
+NOTE:  This template has been provided as an example you can look at and use for this project.  Resist the urge to just copy and paste this code.  I would like you to write every line of code yourself in your own project and understand what you are writing!
+Make the form I provided, which is ugly by design, look much better!
+
+Project:  <Project Name>
+Name: <Your Name>
+Submitted: <Submit Date>
+ 
+I declare that the following source code was written by me, or provided
+by the instructor for this project. I understand that copying source
+code from any other source, providing source code to another student, 
+or leaving my code on a public web site constitutes cheating.
+I acknowledge that  If I am found in violation of this policy this may result
+in a zero grade, a permanent record on file and possibly immediate failure of the class.
+ 
+Reflection (1-2 paragraphs):  I really enjoyed writing this program, but had trouble with blah blah blah.  
+ 
+-->
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <title>Visitor Form</title>
+
+    <link rel="stylesheet" href="css/guestbook.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Visitor Form</h1>
+      <div id="success" class="successMsg" style="display: none">
+        Thank you for logging your visit!
+      </div>
+      <form
+        id="myform"
+        novalidate
+        method="GET"
+        action="https://wp.zybooks.com/form-viewer.php"
+      >
+        <ul class="flex">
+          <li class="section-display">
+            <label for="first-name">First Name</label>
+            <input
+              type="text"
+              id="first-name"
+              name="first-name"
+              placeholder="Enter your first name here"
+            />
+            <div class="errorMsg"></div>
+          </li>
+          <li>
+            <label for="last-name">Last Name</label>
+            <input
+              type="text"
+              id="last-name"
+              name="last-name"
+              placeholder="Enter your last name here"
+            />
+            <div class="errorMsg"></div>
+          </li>
+          <li>
+            <label for="address">Address</label>
+            <input
+              type="text"
+              id="address"
+              name="address"
+              placeholder="Enter your address here"
+            />
+            <div class="errorMsg"></div>
+          </li>
+          <li>
+            <label for="city">City</label>
+            <input
+              type="text"
+              id="city"
+              name="city"
+              placeholder="Enter your city here"
+            />
+            <div class="errorMsg"></div>
+          </li>
+          <li>
+            <label for="state">State</label>
+            <input
+              type="text"
+              id="state"
+              name="state"
+              placeholder="Enter your state here"
+            />
+            <div class="errorMsg"></div>
+          </li>
+          <li>
+            <label for="zip">Zip</label>
+            <input
+              type="text"
+              id="zip"
+              name="zip"
+              placeholder="Enter your zip code here"
+            />
+            <div class="errorMsg"></div>
+          </li>
+          <li>
+            <label for="email">Email</label>
+            <input
+              type="text"
+              id="email"
+              name="email"
+              placeholder="Enter your email here"
+            />
+            <div class="errorMsg"></div>
+          </li>
+          <li>
+            <label for="phone">Phone</label>
+            <input type="text" id="phone" placeholder="Enter your phone here" />
+            <div class="errorMsg"></div>
+          </li>
+          <li>
+            <h2>How did you find my page</h2>
+          </li>
+          <li>
+            <input
+              type="checkbox"
+              id="google"
+              name="find-page"
+              value="google"
+            />
+            <label for="google">Google Search</label>
+          </li>
+          <li>
+            <input
+              type="checkbox"
+              id="friend"
+              name="find-page"
+              value="friend"
+            />
+            <label for="friend">Friend</label>
+          </li>
+          <li>
+            <input
+              type="checkbox"
+              id="newspaper"
+              name="find-page"
+              value="newspaper"
+            />
+
+            <label for="newspaper">News Paper</label>
+            <div class="errorMsg"></div>
+          </li>
+
+          <li>
+            <label for="comment">Comments</label>
+            <textarea
+              rows="4"
+              id="comment"
+              placeholder="Enter your comments here"
+            ></textarea>
+          </li>
+
+          <li>
+            <button type="submit">Send</button>
+          </li>
+        </ul>
+      </form>
+    </div>
+    <!-- We use the 'defer' attribute to make sure this is loaded after everything else on the page-->
+    <script defer src="js/validation.js"></script>
+    <script defer src="js/main.js"></script>
+  </body>
+</html>
