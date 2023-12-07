@@ -1,5 +1,7 @@
 /*
 - Following the Proj 4 feedback, I extended the body to 100% height so that my dark mode colors cover the whole screen
+- I made a new stylesheet for the visitor form because it would require too many exceptions here if I 
+  used this same sheet for both web pages
 */
 
 /* General styles for the whole document */
@@ -19,7 +21,7 @@ body {
     "aside main"
     "foot foot";
   grid-template-rows: 100px 1fr 50px;
-  grid-template-columns: 100px 1fr;
+  grid-template-columns: 120px 1fr;
 }
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 

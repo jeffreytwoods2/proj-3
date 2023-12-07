@@ -1,8 +1,11 @@
-
-
+/*
+- I had to add a custom condition to set the error div of the checkboxes,
+  since that error div is not a sibling of its input element.
+- Also added custom regex for the zip code with more accurate functionality
+*/
 let phoneRegex = /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/;
 let emailRegex = /[\w]*@[\w]*.{1}(com|gov|edu|io|net){1}/;
-let zipCodeRegex = /(?<zip1>\d{5})([-]?(?<zip2>\d{4}))?(?<ERROR>.+)?/
+let zipCodeRegex = /^\d{5}(?:[-]\d{4})?$/
 
 const stateAbbreviations = [
   'AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL', 'GA',
@@ -13,6 +16,7 @@ const stateAbbreviations = [
 ];
 let form=null;
 let successMsg=null;
+document.addEventListener("DOMContentLoaded", initValidation("myform", "success"))
 function initValidation(formId, successId) {
 
   form = document.getElementById(formId);
@@ -20,7 +24,6 @@ function initValidation(formId, successId) {
 
   let inputs = document.querySelectorAll("input");
   for (input of inputs) {
-
     input.addEventListener("change", inputChanged );
   }
   form.addEventListener("submit", submitForm );
@@ -29,28 +32,27 @@ function initValidation(formId, successId) {
 function inputChanged(ev) {
   let el = ev.currentTarget;
   validateForm();
-  /*NOTE: we use 'was-validated' class so that you show the error indications only for the single field rather than the whole form at once*/
- //TODO: ADD 'was-validated' to the current element
+  el.classList.add('was-validated')
 }
 
 function submitForm(ev) {
   console.log("in submit");
   let form=ev.currentTarget;
-  //if you don't preventDefault and stopPropagation
-  //the default form action would be to redirect to the url in the 'action' attribute of the form
-  //https://wp.zybooks.com/form-viewer.php
-  ev.preventDefault(); //for now so we don't redirect
+  ev.preventDefault();
   ev.stopPropagation();
 
   validateForm();
 
-  //DOM checkValidity function tells you current status of form according to html5
-
   if (!form.checkValidity()) {
-    //TODO - if form is invalid, set 'was-validated' class on all inputs to show errors
+    for (const item of document.querySelectorAll("input")) {
+      if (!item.classList.contains("was-validated")) {
+        item.classList.add("was-validated")
+      }
+    }
    
   } else {
-    /*TODO - hide form and show success Message*/
+    document.getElementById("myform").style.display = "none"
+    document.getElementById("success").style.display = "block"
 
   }
 
@@ -72,7 +74,7 @@ function validateForm() {
     checkFormat("email", "email format is bad", emailRegex)
   }
   if (checkRequired("zip", "Zip Code is Required")) {
-    checkFormat("zip", `malformed zip-code, please use either "#####", or "#####-#### format.`, zipCodeRegex)
+    checkFormat("zip", `bad zip-code, use "#####" or "#####-####"`, zipCodeRegex)
   }
   if (checkRequired("phone", "Phone is required")) {
     checkFormat("phone", "phone format is bad", phoneRegex)
@@ -84,16 +86,16 @@ function validateForm() {
 function validateState(id, msg) {
   let el = document.getElementById(id);
   let valid = false;
-  //TODO
-  //get value from el, and convert to upper case
-  //check whether the value is in the stateAbbreviations array
+  let stateUpper = el.value.toUpperCase()
+  if (stateAbbreviations.includes(stateUpper)) {
+    valid = true
+  }
  
   setElementValidity(id, valid, msg);
 }
 
 function checkFormat(id, msg, regex) {
-  //this function applies a regex to determine if element is valid
- //TODO-get element value and test it against the regex that was passed in
+  let valid = regex.test(document.getElementById(id).value)
 
   setElementValidity(id, valid, msg);
   return valid;
@@ -107,19 +109,16 @@ function checkRequired(id, message) {
   switch (type) {
     case 'text':
     case 'password':
-     //TODO-check if input has a 'value', set valid to true if so, false if not
+      valid = el.value === "" ? false : true
       break;
 
     case 'checkbox':
-    case 'radio':
-
-  //TODO
-  //Validate whether any of the checkboxes are checked. set 'valid' to true if checked
-  //remember that the 'name' field is shared by all of them so you can get the element's name, then
-  //use a querySelectorAll to get the radio/check elements to validate.
-  //if any of the elements is 'checked', return true.
-    
-
+      for (const item of document.querySelectorAll("[name='find-page'")) {
+        if (item.checked) {
+          valid = true
+          break
+        }
+      }
   }
   setElementValidity(id, valid, message);
   
@@ -130,15 +129,15 @@ function checkRequired(id, message) {
 function setElementValidity(id, valid, message) {
   let el = document.getElementById(id);
 
-  if (valid) { //it has a value
-
-    el.setCustomValidity(''); //sets to no error message and field is valid
+  if (valid) {
+    el.setCustomValidity('');
   } else {
-
-    el.setCustomValidity(message); //sets error message and field gets 'invalid' stat
-
-    //TODO  insert or remove message in error div for element
-
+    el.setCustomValidity(message);
+  }
+  if (el.name === "find-page") {
+    document.getElementById("check-err").innerText = valid ? "" : message
+  } else {
+    el.nextElementSibling.innerText = valid ? "" : message
   }
 
 }

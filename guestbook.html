@@ -37,69 +37,69 @@ Reflection (1-2 paragraphs):  I really enjoyed writing this program, but had tro
     </div>
     <form id="myform" novalidate method="GET" action="https://wp.zybooks.com/form-viewer.php">
       <ul class="flex">
-        <li class="section-display">
+        <li>
           <label for="first-name">First Name</label>
-          <div>
+          <div class="contact">
             <span>></span>
             <input type="text" id="first-name" name="first-name" placeholder="Enter your first name here" />
+            <div class="errorMsg"></div>
           </div>
-          <div class="errorMsg"></div>
         </li>
         <li>
           <label for="last-name">Last Name</label>
-          <div>
+          <div class="contact">
             <span>></span>
-            <input type="text" id="last-name" name="last-name" placeholder="Enter your last name here" />
+            <input type="text" id="last-name" name="last-name" placeholder="Enter your last name here" cols="28" />
+            <div class="errorMsg"></div>
           </div>
-          <div class="errorMsg"></div>
         </li>
         <li>
           <label for="address">Address</label>
-          <div>
+          <div class="contact">
             <span>></span>
-            <input type="text" id="address" name="address" placeholder="Enter your address here" />
+            <input type="text" id="address" name="address" placeholder="Enter your address here" cols="28" />
+            <div class="errorMsg"></div>
           </div>
-          <div class="errorMsg"></div>
         </li>
         <li>
           <label for="city">City</label>
-          <div>
+          <div class="contact">
             <span>></span>
-            <input type="text" id="city" name="city" placeholder="Enter your city here" />
+            <input type="text" id="city" name="city" placeholder="Enter your city here" cols="28" />
+            <div class="errorMsg"></div>
           </div>
-          <div class="errorMsg"></div>
         </li>
         <li>
           <label for="state">State</label>
-          <div>
+          <div class="contact">
             <span>></span>
-            <input type="text" id="state" name="state" placeholder="Enter your state here" />
+            <input type="text" id="state" name="state" placeholder="Enter your state here" cols="28" />
+            <div class="errorMsg"></div>
           </div>
-          <div class="errorMsg"></div>
         </li>
         <li>
           <label for="zip">Zip</label>
-          <div>
+          <div class="contact">
             <span>></span>
-            <input type="text" id="zip" name="zip" placeholder="Enter your zip code here" />
+            <input type="text" id="zip" name="zip" placeholder="Enter your zip code here" cols="28" />
+            <div class="errorMsg"></div>
           </div>
-          <div class="errorMsg"></div>
         </li>
         <li>
           <label for="email">Email</label>
-          <div>
+          <div class="contact">
             <span>></span>
-            <input type="text" id="email" name="email" placeholder="Enter your email here" />
+            <input type="text" id="email" name="email" placeholder="Enter your email here" cols="28" />
+            <div class="errorMsg"></div>
           </div>
-          <div class="errorMsg"></div>
         </li>
         <li>
           <label for="phone">Phone</label>
-          <div>
+          <div class="contact">
             <span>></span>
-            <input type="text" id="phone" placeholder="Enter your phone here" />
+            <input type="text" id="phone" placeholder="Enter your phone here" cols="28" />
+            <div class="errorMsg"></div>
           </div>
-          <div class="errorMsg"></div>
         </li>
         <div id="find-block">
           <li>
@@ -107,19 +107,25 @@ Reflection (1-2 paragraphs):  I really enjoyed writing this program, but had tro
           </li>
           <div id="source">
             <li>
-              <input type="checkbox" id="google" name="find-page" value="google" />
-              <label for="google">Google Search</label>
+              <label for="google" class="chk-container">Google Search
+                <input type="checkbox" id="google" name="find-page" value="google" />
+                <span class="checkbox"></span>
+              </label>
             </li>
             <li>
-              <input type="checkbox" id="friend" name="find-page" value="friend" />
-              <label for="friend">Friend</label>
+              <label for="friend" class="chk-container">Friend
+                <input type="checkbox" id="friend" name="find-page" value="friend" />
+                <span class="checkbox"></span>
+              </label>
             </li>
             <li>
-              <input type="checkbox" id="newspaper" name="find-page" value="newspaper" />
-              <label for="newspaper">Social Media</label>
-              <div class="errorMsg"></div>
+              <label for="newspaper" class="chk-container">Social Media
+                <input type="checkbox" id="newspaper" name="find-page" value="newspaper" />
+                <span class="checkbox"></span>
+              </label>
             </li>
           </div>
+          <div class="errorMsg" id="check-err"></div>
         </div>
         <fieldset>
           <legend><label for="comment">Comments</label></legend>

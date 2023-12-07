@@ -25,6 +25,11 @@ form {
 
 .errorMsg {
   color: red;
+  font-size: 0.75em;
+}
+
+input + .errorMsg {
+  text-align: right;
 }
 
 input {
@@ -53,16 +58,16 @@ input.was-validated:invalid {
   border: 1px solid red;
 }
 
-input.was-validated:invalid ~ div {
+input.was-validated:invalid ~ div.errorMsg {
   display: block;
 }
 /* hide all error divs 
   ~ is the general sibling selector and selects 'div' siblings of the input*/
-input:valid ~ div {
+input:valid ~ div.errorMsg {
   display: none;
 }
 
-input:invalid ~ div {
+input:invalid ~ div.errorMsg {
   display: none;
 }
 
@@ -89,6 +94,11 @@ ul.flex {
   width: 100%;
 }
 
+.contact {
+  display: inline-block;
+  text-align: right;
+}
+
 .flex li {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -97,28 +107,37 @@ ul.flex {
   flex-wrap: wrap;
   -webkit-box-align: center;
   -ms-flex-align: center;
-  align-items: center;
+  /* align-items: center; */
   -webkit-box-pack: end;
   -ms-flex-pack: end;
-  justify-content: center;
+  justify-content: space-between;
 }
 
-.flex li li input,
-.flex li textarea {
-  padding: 15px;
-  font: normal 16px/1.5 sans-serif;
+.flex > li {
+  max-width: 400px;
+  margin: auto;
 }
 
 .flex button {
   margin: auto;
   padding: 22px 46px;
   font: normal 22px/1.5 sans-serif;
-  border: none;
-  background: #d84315;
-  color: #f2f2f2;
+  border: solid 1px lime;
+  background: black;
+  color: lime;
   text-transform: uppercase;
   letter-spacing: 0.09em;
   border-radius: 4px;
+  transition: font-size 0.5s;
+}
+
+.flex button:hover {
+  font-size: 1.55em;
+}
+
+.flex button:active {
+  background-color: lime;
+  color: black;
 }
 
 .flex > li {
@@ -127,9 +146,10 @@ ul.flex {
 
 .flex > li > label {
   -webkit-box-flex: 1;
-  -ms-flex: 1 0 140px;
-  flex: 1 0 140px;
+  -ms-flex: 1 0 100px;
+  flex: 1 0 100px;
   max-width: 200px;
+  align-self: top;
 }
 
 .flex > li + * {
@@ -138,16 +158,14 @@ ul.flex {
   flex: 1 0 200px;
 }
 
-.flex > input[type="radio"] ~ div.errorMsg,
-.flex > input[type="checkbox"] ~ div.errorMsg {
-  -webkit-box-flex: 1;
-  -ms-flex: 1 0 350px;
-  flex: 1 0 350px;
-  text-align: right;
-}
-
 input[type="checkbox"] {
   margin-right: 10px;
+}
+
+input[type="text"], input + .errorMsg {
+  width: 170px;
+  margin-left: auto;
+  margin-right: 0;
 }
 
 #source {
@@ -155,6 +173,63 @@ input[type="checkbox"] {
   flex-wrap: wrap;
   justify-content: space-around;
   font-size: 1.5em;
+}
+
+.chk-container {
+  display: flex;
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding: auto;
+}
+
+.chk-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.chk-container:hover input ~ .checkbox {
+  background-color: lime;
+  opacity: 35%;
+}
+
+.chk-container input:checked ~ .checkbox {
+  background-color: lime;
+  opacity: 100%;
+}
+
+.checkbox:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.chk-container input:checked ~ .checkbox:after {
+  display: block;
+}
+
+.checkbox {
+  position: absolute;
+  left: 0;
+  align-self: center;
+  height: 15px;
+  width: 15px;
+  background-color: black;
+  border: solid 1px lime;
+}
+
+#check-err {
+  text-align: center;
+  font-size: 1.25em;
 }
 
 @media screen and (max-width: 1050px) {

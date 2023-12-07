@@ -1,5 +1,9 @@
+/*
+I added an unload function to the bottom so that scripts would work after returning to this page again
+*/
+
 document.addEventListener("DOMContentLoaded", function () {
-  const menuLinks = document.querySelectorAll("nav a");
+  const menuLinks = document.querySelectorAll("nav a:not(#no-js)");
   const sections = document.querySelectorAll("main section");
 
   menuLinks.forEach((link) => {
@@ -59,3 +63,5 @@ for (i = 0; i < allBtns.length; i++) {
     }
   });
 }
+
+window.onunload = function(){};
